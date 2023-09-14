@@ -8,7 +8,7 @@
 <body>
 <?php
 if (is_uploaded_file($_FILES['nombre_archivo_cliente']['tmp_name'])) {
-    $nombreDirectorio = "C:\\Users\\abidi\\Downloads\\"; 
+    $nombreDirectorio = "C:xampp\htdocs\Ds7\Lab5"; 
     $nombrearchivo = $_FILES['nombre_archivo_cliente']['name'];
     $nombreCompleto = $nombreDirectorio . $nombrearchivo;
     $ext = pathinfo($nombrearchivo, PATHINFO_EXTENSION);
