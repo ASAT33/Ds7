@@ -9,7 +9,7 @@
 <?php
 if (is_uploaded_file ($_FILES['nombre_archivo_cliente']['tmp_name']))
 {
-    $extensiones_permitidas = array('jpg', 'jpeg', 'gif', 'png');
+ 
     $nombreDirectorio = "C:\Users\abidi\Downloads";
     $nombrearchivo = $_FILES['nombre_archivo_cliente']['name'];
     $ext = pathinfo($nombrearchivo, PATHINFO_EXTENSION);
