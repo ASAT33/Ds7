@@ -10,7 +10,7 @@
 if (is_uploaded_file ($_FILES['nombre_archivo_cliente']['tmp_name']))
 {
  
-    $nombreDirectorio = "C:xampp\htdocs\Ds7\Lab5";
+    $nombreDirectorio = "archivos/";
     $nombrearchivo = $_FILES['nombre_archivo_cliente']['name'];
     $ext = pathinfo($nombrearchivo, PATHINFO_EXTENSION);
     $nombreCompleto = $nombreDirectorio . $nombrearchivo;
