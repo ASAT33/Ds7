@@ -1,0 +1,144 @@
+body {
+    
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #fff;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #222;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #e20b1dc7;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d80f84;
+}
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #007bff;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.navbar li {
+    margin: 0 10px; /* Añade un espacio entre las opciones */
+}
+
+.navbar li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover {
+    background-color: #0056b3;
+}
+
+.cerrar-sesion {
+    margin-left: auto; /* Mueve el "Cerrar Sesión" hacia la derecha */
+}
+
+header {
+    background-color: #00aeff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+main {
+    padding: 50px;
+}
+
+.product-card {
+    border: 1px solid rgba(255, 255, 220, 0.2);
+    width: 40vw;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.06);
+}
+
+.product-image {
+    max-width: 10%;
+    height: 40%;
+    margin-bottom: 20px;
+}
+
+.product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #00aeff;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
