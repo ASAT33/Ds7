@@ -1,41 +1,28 @@
 <?php
 session_start();
 
-$apiKey = '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'; // Reemplaza con tu clave API de SendinBlue
-
-$conexion = new mysqli("localhost", "root", "", "farmacia_db", 3306);
-
-if ($conexion->connect_error) {
-    die("Conexión fallida: " . $conexion->connect_error);
-}
+$apiKey = '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'; // Reemplaza con tu clave API de SendinBlue
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $conexion->real_escape_string($_POST['usuario']);
-    $contrasena = $conexion->real_escape_string($_POST['contrasena']);
+    $usuario = $_POST['usuario'];
+    $contrasena = $_POST['contrasena'];
 
-    $query = "SELECT * FROM usuarios WHERE username='$usuario'";
-    $resultado = $conexion->query($query);
-
-    if ($resultado->num_rows == 1) {
-        $row = $resultado->fetch_assoc();
-        if (password_verify($contrasena, $row['password'])) {
+    // Verifica si el usuario y contraseña coinciden en el arreglo de sesiones
+    foreach ($_SESSION['usuarios'] as $user) {
+        if ($user['username'] === $usuario && password_verify($contrasena, $user['password'])) {
             // Inicio de sesión exitoso
             $_SESSION['usuario'] = $usuario;
             $_SESSION['codigo_autenticacion'] = strval(mt_rand(100000, 999999)); // Genera un código aleatorio de 6 dígitos
-            $_SESSION['limite_tiempo'] = time() + 300; // 300 segundos = 5 minutos
-            // Obtén la dirección de correo electrónico del usuario autenticado
-            $email = $row['email'];
-            $_SESSION['email'] = $email;
+            $_SESSION['limite_tiempo'] = time() + 70; 
+            $_SESSION['email'] = $user['email'];
 
             // Envía el código de verificación por correo
-            $url = 'https://api.sendinblue.com/v3/smtp/email';
-
-            $to = $email;
+            $to = $user['email'];
             $subject = 'Código de Verificación';
             $content = 'Tu código de verificación es: ' . $_SESSION['codigo_autenticacion'];
 
             $data = array(
-                'sender' => array('name' => 'Tu Nombre', 'email' => 'tucorreo@example.com'),
+                'sender' => array('name' => 'Proyecto 1', 'email' => 'servidorproy@gmail.com'),
                 'to' => array(array('email' => $to)),
                 'subject' => $subject,
                 'htmlContent' => $content
@@ -45,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'Content-Type: application/json',
                 'api-key: ' . $apiKey
             );
+
+            $url = 'https://api.sendinblue.com/v3/smtp/email';
 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -58,11 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             header("Location: autenticacion.php"); // Redirige a la página de autenticación
             exit();
-        } else {
-            $error = "Contraseña incorrecta";
         }
-    } else {
-        $error = "Usuario no encontrado";
     }
+
+    header("Location: index.html");
+    exit();
 }
 ?>

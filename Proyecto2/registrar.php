@@ -1,21 +1,21 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "farmacia_db", 3306);
-if ($conexion->connect_error) {
-    die("Conexión fallida: " . $conexion->connect_error);
-}
+session_start();
 
-$reg_username = $_POST["reg_username"];
-$reg_password = password_hash($_POST["reg_password"], PASSWORD_DEFAULT);
-$reg_email = $_POST["reg_email"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $reg_username = $_POST["reg_username"];
+    $reg_password = password_hash($_POST["reg_password"], PASSWORD_DEFAULT);
+    $reg_email = $_POST["reg_email"];
 
-$sql = "INSERT INTO usuarios (username, password, email) VALUES ('$reg_username', '$reg_password', '$reg_email')";
+    // Guardar información en un arreglo de sesión
+    $_SESSION['usuarios'][] = array(
+        'username' => $reg_username,
+        'password' => $reg_password,
+        'email' => $reg_email
+    );
 
-if ($conexion->query($sql) === TRUE) {
     echo "Te has registrado exitosamente.";
-    // Aquí podrías redirigir al usuario a donde desees.
+    header("Location: index.html");
 } else {
-    echo "Error al registrar el usuario: " . $conexion->error;
+    echo "Error al registrar el usuario.";
 }
-
-$conexion->close();
 ?>

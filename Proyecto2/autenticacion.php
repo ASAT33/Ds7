@@ -18,6 +18,7 @@ if(isset($_SESSION['codigo_autenticacion'])) {
 <body>
     <div class="auth-container">
     <h2>Autenticación de Dos Pasos</h2>
+    <h3> Digite el codigo enviado a su correo</h3>
         <form action="verificar_codigo.php" method="post">
             <div class="form-group">
                 <label for="codigo_autenticacion">Código de Autenticación:</label>
