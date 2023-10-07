@@ -6,10 +6,33 @@
 </head>
 <body>
     <h1>Consulta de noticias</h1>
+<FORM NAME="FormFiltro" method="post" action="Lab92.php">
+<br/>
+Filtrar por <select name="campos">
+<option value="texto" selected>Descripcion
+<option value="titulo">Titulo
+<option value="categoria">Categoria
+</select>
+con el valor
+<input type="text" name="valor"/>
+<input name="ConsultarFiltro" value="Filtrar Datos" type="submit" />
+<input name="ConsultarTodos" value="Ver todos" type="submit" />
+
+</FORM>
+
+
 <?php
 require_once("class/noticias.php");
 $obj_noticia =new noticia();
 $noticia =$obj_noticia->consultar_noticias();
+if(array_key_exists('ConsultarTodos',$_POST)){
+    $obj_noticia= new noticia();
+    $noticias_new =$obj_noticia->consultar_noticias();
+}
+if (array_key_exists('Consultar Filtro',$_POST)){
+    $obj_noticia =new noticia();
+    $noticias =$obj_noticia->consultar_noticias_filtro($_REQUEST['campos'],$_REQUEST['valor']);
+}
 $nfilas=count($noticia);
 
 if ($nfilas > 0){

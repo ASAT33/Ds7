@@ -20,11 +20,24 @@ class noticia extends modeloCredencialesBD {
         if(!$resultado){
             echo "Fallo al consultar la noticias";
         }
-
+ else{
+        return $resultado;
         $consulta->close();
         $this->_db->close();
+ }
         
-        return $resultado;
+    }
+
+    public function consultar_noticias_filtro($campo,$valor){
+$instruccion ="CALL sp_listar_noticias_filtro('".$campo."','".$valor."')";
+
+$consulta=$this->_db->query($instruccion);
+$resultado=$consulta->fetch_all(MYSQLI_ASSOC);
+if($resultado){ 
+    return $resultado;
+    $consulta->close();
+    $this->_db->close();}
+
     }
 }
 ?>
