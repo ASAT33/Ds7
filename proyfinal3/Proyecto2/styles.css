@@ -142,3 +142,20 @@ footer {
     bottom: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+button, .boton {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #e20b1dc7;
+    margin-bottom: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Esto es importante para que el enlace no tenga subrayado */
+}
+
+button:hover, .boton:hover {
+    background-color: #d80f84;
+}

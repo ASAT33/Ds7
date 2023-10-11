@@ -1,14 +1,17 @@
 <?php
 session_start();
 
-$apiKey = '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'; // Reemplaza con tu clave API de SendinBlue
+$apiKey = ''; // Reemplaza con tu clave API de SendinBlue
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
 
-    // Verifica si el usuario y contraseña coinciden en el arreglo de sesiones
-    foreach ($_SESSION['usuarios'] as $user) {
+    // Leer el archivo de usuarios
+    $usuarios = json_decode(file_get_contents('usuarios.json'), true);
+
+    // Verifica si el usuario y contraseña coinciden en el archivo JSON
+    foreach ($usuarios as $user) {
         if ($user['username'] === $usuario && password_verify($contrasena, $user['password'])) {
             // Inicio de sesión exitoso
             $_SESSION['usuario'] = $usuario;
@@ -50,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    // Si no se encontró una coincidencia de usuario y contraseña
     header("Location: index.html");
     exit();
 }
