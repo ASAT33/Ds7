@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$apiKey = ''; // Reemplaza con tu clave API de SendinBlue
+$apiKey = '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'; // Reemplaza con tu clave API de SendinBlue
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];

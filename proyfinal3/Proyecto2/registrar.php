@@ -6,11 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reg_password = password_hash($_POST["reg_password"], PASSWORD_DEFAULT);
     $reg_email = $_POST["reg_email"];
 
-    // Verificar si el archivo de usuarios existe, si no, crearlo
-    if (!file_exists('usuarios.json')) {
-        file_put_contents('usuarios.json', json_encode([]));
-    }
-
     // Leer el archivo de usuarios
     $usuarios = json_decode(file_get_contents('usuarios.json'), true);
 
