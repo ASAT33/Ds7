@@ -27,17 +27,12 @@ class funciones extends modeloCredencialesBD{
         }
     }
     
-    
    /* public function actualizar_estado($id, $estado) {
-        global $conn;
-        // Escapamos el estado para prevenir inyección de SQL
-        $estado = $conn->real_escape_string($estado);
-    
-        $query = "UPDATE tareas SET estado='$estado' WHERE id=$id";
-        return $conn->query($query);
     }
-    */
-    
+
+    public function editado($id, $editado) {
+    }
+
      public function eliminar_tarea($id) {
         $query = "CALL sp_eliminar_tarea('$id')";
         $consulta = $this->_db->query($query);
@@ -48,6 +43,8 @@ class funciones extends modeloCredencialesBD{
             return false; 
         }
     }
+    */
+
 }
 
 
