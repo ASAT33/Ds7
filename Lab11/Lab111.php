@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio 11 - 01</title>
+    <title>Laboratorio 11</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
 <body>
     <h1>Consulta de noticias</h1>
     <?php
-    require_once("noticias.php");
+    require_once("class/noticias.php");
 
-    $obj_noticias = new noticias();
+    $obj_noticias = new noticia();
 
     $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
     $noticias_por_pagina = 3;
