@@ -13,7 +13,7 @@
     <?php
     require_once("class/noticias.php");
 
-    $obj_noticias = new noticia();
+    $obj_noticias = new noticias();
 
     $pagina_actual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
     $noticias_por_pagina = 3;
