@@ -23,7 +23,7 @@ class conteo extends modeloCredencialesBD {
             $this->_db->close();
             return $data;
         } else {
-            // Manejo de error si la consulta falla
+
             return null;
         }
     }
