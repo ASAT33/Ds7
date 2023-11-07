@@ -39,9 +39,6 @@ if($resultado){
     $this->_db->close();}
 
     }
-
-
-    
 }
 
 
